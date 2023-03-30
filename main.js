@@ -72,7 +72,7 @@ const users = [
   
   // write a function that totals the age of all users
   function totalUserAge(users) {
-    arrAge = [];
+    const arrAge = [];
     let sum = 0;
     const result = users.filter(user => user.age)
     Object.values(result).forEach(val => arrAge.push(val.age))
@@ -81,18 +81,61 @@ const users = [
     console.log(sum)
   }
   
-  totalUserAge(users);
-  
   // write a function that totals the age of all users, using reduce if you did not choose that for previous prompt
+  function reduceUserAge(users) {
+    const arrAge = [];
+    const total = 0;
+    const result = users.filter(user => user.age)
+    Object.values(result).forEach(val => arrAge.push(val.age))
+    console.log(arrAge)
+    const final = arrAge.reduce(
+    (accumulator, currentValue) => accumulator + currentValue,
+    total
+  );
+    console.log(final)
+  } 
   
   
   // write a function that returns an object where each key is a profession, and each value is the number of users in that profession.  i.e. for this one you should have {engineer: 3, recruiter: 1, chef: 1, musician: 2}
+  function returnProfessionObj(users){
   
+  }
+  
+  returnProfessionObj(users)
   
   // write a function that returns the object for the user 'Janet'
+  function returnJanet(users) {
+    const filterNames = users.filter(user => user.name === 'Janet')
+    console.log(filterNames[0])
+    return filterNames[0] 
+  }
   
   // write a function that returns an array of all of the hobbies that users have
+  function returnHobbies(users) {
+    const arrHobbies = [];
+    Object.values(users).forEach(val => arrHobbies.push(val.hobbies));
+    console.log(arrHobbies);
+    return arrHobbies;
+  }
   
   // bonus: same as previous prompt, but remove duplicates
+  function returnUniqueHobbies(users) {
+    const arrHobbies = [];
+    Object.values(users).forEach(val => arrHobbies.push(val.hobbies));
+    const flatHobbies = arrHobbies.flat()
+    const uniqueHobbies = [...new Set(flatHobbies)];
+    console.log(uniqueHobbies)
+    return uniqueHobbies
+  }
   
   // write a function that returns an array sorted from youngest to oldest user.  Do not mutate the original array.
+  
+  function sortedByAge(users) {
+    arrYoungToOld = [];
+    const arrUsers = users
+    const youngToOldUsers = arrUsers.sort((a,b) => a.age - b.age);
+    const namesOfYoungToOld = Object.values(youngToOldUsers).forEach(val => arrYoungToOld.push(val.name))
+    console.log(arrYoungToOld)
+    return arrYoungToOld;
+  }
+  
