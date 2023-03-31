@@ -43,55 +43,56 @@ const users = [
     }
   ];
   
+  
+  
+  
   // TODO - go through each of these.  If you first use a for loop to solve a prompt, that is completely fine-- but make sure you also write a function for the prompt that uses the array methods forEach, map, filter, find, findIndex or reduce where it makes sense. 
   
   // write a function that prints the age of each user
   function printAge(users) {
-    Object.values(users).forEach(val => console.log(val.name, val.age))
+    users.forEach(val => console.log(val.age))
   }
-  
+  // printAge(users);
   // write a function that returns an array of the names of the users :
   function arrayOfNames(users) {
-    arrNames = [];
-    Object.values(users).forEach(val => arrNames.push(val.name))
-    console.log(arrNames)
-    return arrNames
+    return users.map(user => user.name);
   }
-  
+  //console.log(arrayOfNames(users));
   // write a function that returns an array of the names of users under 30
   function filterAge(users) {
-    arrNames = [];
-    const result = users.filter(user => user.age < 30)
-    Object.values(result).forEach(val => arrNames.push(val.name))
-    console.log(arrNames);
-    return arrNames
+    const result = users
+      .filter(user => user.age < 30)
+      .map(user => user.name)
+    console.log(result)
+    return result
   }
+  // filterAge(users);
   
   // write a function that totals the age of all users
   function totalUserAge(users) {
-    const arrAge = [];
     let sum = 0;
-    const result = users.filter(user => user.age)
-    Object.values(result).forEach(val => arrAge.push(val.age))
-    console.log(arrAge)
+    const arrAge = users.map(user => user.age)
     arrAge.forEach(val => sum += val) 
-    console.log(sum)
+    return sum
   }
+  //console.log(totalUserAge(users))
   
   // write a function that totals the age of all users, using reduce if you did not choose that for previous prompt
   function reduceUserAge(users) {
-    const arrAge = [];
-    const total = 0;
-    const result = users.filter(user => user.age)
-    Object.values(result).forEach(val => arrAge.push(val.age))
-    console.log(arrAge)
-    const final = arrAge.reduce(
-    (accumulator, currentValue) => accumulator + currentValue,
-    total
-  );
-    console.log(final)
+    const seed = 0;
+    const arrAge = users
+      .map(user => user.age)
+      .reduce(
+      (totalAgesTogether, currentAge) => {
+        console.log("acc: ", totalAgesTogether, "cv: ", currentAge);
+        return totalAgeTogether + currentAge
+      }, 
+      seed
+      );
+      //console.log(arrAge)
+      return arrAge
   } 
-  
+  //console.log(reduceUserAge(users))
   
   // write a function that returns an object where each key is a profession, and each value is the number of users in that profession.  i.e. for this one you should have {engineer: 3, recruiter: 1, chef: 1, musician: 2}
   function returnProfessionObj(users) {
@@ -124,33 +125,34 @@ const users = [
     console.log(filterNames[0])
     return filterNames[0] 
   }
+  //console.log(returnJanet(users))
   
   // write a function that returns an array of all of the hobbies that users have
   function returnHobbies(users) {
-    const arrHobbies = [];
-    Object.values(users).forEach(val => arrHobbies.push(val.hobbies));
-    console.log(arrHobbies);
+    const arrHobbies = users.map(val => val.hobbies).flat();
     return arrHobbies;
   }
+  //console.log(returnHobbies(users))
   
   // bonus: same as previous prompt, but remove duplicates
   function returnUniqueHobbies(users) {
-    const arrHobbies = [];
-    Object.values(users).forEach(val => arrHobbies.push(val.hobbies));
+    const arrHobbies = users.map(val => val.hobbies);
     const flatHobbies = arrHobbies.flat()
     const uniqueHobbies = [...new Set(flatHobbies)];
-    console.log(uniqueHobbies)
+    //console.log(uniqueHobbies)
     return uniqueHobbies
   }
+  // console.log(returnUniqueHobbies(users))
   
   // write a function that returns an array sorted from youngest to oldest user.  Do not mutate the original array.
-  
   function sortedByAge(users) {
     arrYoungToOld = [];
-    const arrUsers = users
+    const arrUsers = [...users]
     const youngToOldUsers = arrUsers.sort((a,b) => a.age - b.age);
-    const namesOfYoungToOld = Object.values(youngToOldUsers).forEach(val => arrYoungToOld.push(val.name))
-    console.log(arrYoungToOld)
-    return arrYoungToOld;
+    //const namesOfYoungToOld = youngToOldUsers.map(name => name.name)
+    console.log(users)
+    return youngToOldUsers
   }
+  
+  console.log(sortedByAge(users));
   
