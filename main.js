@@ -43,9 +43,6 @@ const users = [
     }
   ];
   
-  
-  
-  
   // TODO - go through each of these.  If you first use a for loop to solve a prompt, that is completely fine-- but make sure you also write a function for the prompt that uses the array methods forEach, map, filter, find, findIndex or reduce where it makes sense. 
   
   // write a function that prints the age of each user
@@ -97,11 +94,29 @@ const users = [
   
   
   // write a function that returns an object where each key is a profession, and each value is the number of users in that profession.  i.e. for this one you should have {engineer: 3, recruiter: 1, chef: 1, musician: 2}
-  function returnProfessionObj(users){
-  
+  function returnProfessionObj(users) {
+    //engineer
+    const arrEngineer = [];
+    const engineerObj = users.filter(user => user.job === 'engineer');
+    Object.values(engineerObj).forEach(val => arrEngineer.push(val.name));
+    //recruiter
+    const arrRecruiter = [];
+    const recruiterObj = users.filter(user => user.job === 'recruiter');
+    Object.values(recruiterObj).forEach(val => arrRecruiter.push(val.name));
+    //chef
+    const arrChef = [];
+    const chefObj = users.filter(user => user.job === 'chef');
+    Object.values(chefObj).forEach(val => arrChef.push(val.name));
+    //musician
+    const arrMusician = [];
+    const musicianObj = users.filter(user => user.job === 'musician');
+    Object.values(musicianObj).forEach(val => arrMusician.push(val.name));
+    const finalObj = `{engineer: ${arrEngineer.length}, recruiter: ${arrRecruiter.length}, chef: ${arrChef.length}, musician: ${arrMusician.length}}`
+    console.log(finalObj)
+    return finalObj
   }
   
-  returnProfessionObj(users)
+  //returnProfessionObj(users)
   
   // write a function that returns the object for the user 'Janet'
   function returnJanet(users) {
