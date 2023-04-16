@@ -156,3 +156,12 @@ const users = [
   
   console.log(sortedByAge(users));
   
+  /* *********** */
+
+  function returnProfessionObj(users) {
+    const userProfessionReduce = users.reduce((professionTotal, currentJob) => {
+     return professionTotal + currentJob.job+ " "   
+    }, {}) 
+    return userProfessionReduce
+  }
+  console.log(returnProfessionObj(users))
