@@ -159,9 +159,19 @@ const users = [
   /* *********** */
 
   function returnProfessionObj(users) {
-    const userProfessionReduce = users.reduce((professionTotal, currentJob) => {
-     return professionTotal + currentJob.job+ " "   
+    const userProfessionReduce = users.reduce((professionTotalObj, userObject) => {
+      let jobTitle = userObject.job
+      console.log('jobTitle:', jobTitle, 'professionTotalObj Before:', professionTotalObj)
+      if (professionTotalObj[jobTitle]) {
+        professionTotalObj[jobTitle] = professionTotalObj[jobTitle] + 1
+        console.log('professionTotalObj[jobTitle]:',professionTotalObj[jobTitle])
+      } else {
+        professionTotalObj[jobTitle] = 1
+        console.log('professionTotalObj[jobTitle]:', professionTotalObj[jobTitle])
+      } 
+      console.log('professionTotalObj:', professionTotalObj)
+      return professionTotalObj
     }, {}) 
     return userProfessionReduce
   }
-  console.log(returnProfessionObj(users))
+  //console.log(returnProfessionObj(users))
